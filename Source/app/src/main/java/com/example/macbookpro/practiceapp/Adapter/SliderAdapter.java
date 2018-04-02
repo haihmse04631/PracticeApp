@@ -1,4 +1,4 @@
-package com.example.macbookpro.practiceapp;
+package com.example.macbookpro.practiceapp.Adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.macbookpro.practiceapp.R;
 
 /**
  * Created by MacbookPro on 3/25/18.

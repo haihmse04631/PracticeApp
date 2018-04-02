@@ -1,10 +1,7 @@
-package com.example.macbookpro.practiceapp;
+package com.example.macbookpro.practiceapp.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
@@ -13,6 +10,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.macbookpro.practiceapp.Adapter.SliderAdapter;
+import com.example.macbookpro.practiceapp.R;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TutorialPagerAdapter tutorialPagerAdapter = new TutorialPagerAdapter(getSupportFragmentManager());
         viewPager = findViewById(R.id.container);
         containerLayout = findViewById(R.id.rl_container);
         mDotLayout = findViewById(R.id.ll_dot);
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         sliderAdapter = new SliderAdapter(this);
         viewPager.setAdapter(sliderAdapter);
         addDot(0);
-
+        Log.e("status", "oncreate");
         viewPager.addOnPageChangeListener(viewListener);
 
         tvNext.setOnClickListener(new View.OnClickListener() {
@@ -106,31 +105,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public class TutorialPagerAdapter extends FragmentPagerAdapter {
 
-        public TutorialPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            Log.e("position", position + "");
-            switch (position) {
-                case 0:
-                    return TutorialScreen1.newInstance();
-                case 1:
-                    return TutorialScreen2.newInstance();
-                case 2:
-                    return TutorialScreen3.newInstance();
-            }
-            return null;
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-    }
 
 
 }

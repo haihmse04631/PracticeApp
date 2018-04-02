@@ -1,4 +1,4 @@
-package com.example.macbookpro.practiceapp;
+package com.example.macbookpro.practiceapp.Fragment;
 
 
 import android.os.Bundle;
@@ -7,22 +7,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.macbookpro.practiceapp.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TutorialScreen3 extends Fragment {
+public class ProfileFragment extends Fragment {
 
 
-    public TutorialScreen3() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
-    public static TutorialScreen3 newInstance() {
-        
+    public static ProfileFragment newInstance() {
+
         Bundle args = new Bundle();
-        
-        TutorialScreen3 fragment = new TutorialScreen3();
+
+        ProfileFragment fragment = new ProfileFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -31,7 +33,7 @@ public class TutorialScreen3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial_screen3, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
 }
