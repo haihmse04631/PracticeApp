@@ -6,4 +6,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorTransparentWhite">#cccccc</color>
     <color name="backgroundColor">#231e22</color>
+    <color name="backgroundColor2">#ffffff</color>
+    <color name="backgroundTabLayout">#898688</color>
+    <color name="Red">#fd0810</color>
+
 </resources>

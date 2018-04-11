@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -35,13 +34,11 @@ public class MainActivity extends AppCompatActivity {
         sliderAdapter = new SliderAdapter(this);
         viewPager.setAdapter(sliderAdapter);
         addDot(0);
-        Log.e("status", "oncreate");
         viewPager.addOnPageChangeListener(viewListener);
 
         tvNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("currentPage", currentPage + "");
                 if (currentPage == 2) {
                     Intent intent = new Intent(MainActivity.this, LifelogActivity.class);
                     startActivity(intent);

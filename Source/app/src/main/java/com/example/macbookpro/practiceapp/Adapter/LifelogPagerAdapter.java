@@ -8,6 +8,7 @@ import com.example.macbookpro.practiceapp.Fragment.ChatFragment;
 import com.example.macbookpro.practiceapp.Fragment.MapFragment;
 import com.example.macbookpro.practiceapp.Fragment.MusicFragment;
 import com.example.macbookpro.practiceapp.Fragment.ProfileFragment;
+import com.example.macbookpro.practiceapp.Fragment.SettingFragment;
 
 /**
  * Created by MacbookPro on 3/25/18.
@@ -21,7 +22,7 @@ public class LifelogPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 return MusicFragment.newInstance();
             case 1:
@@ -30,12 +31,14 @@ public class LifelogPagerAdapter extends FragmentPagerAdapter {
                 return ChatFragment.newInstance();
             case 3:
                 return ProfileFragment.newInstance();
+            case 4:
+                return SettingFragment.newInstance();
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 }
