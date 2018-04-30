@@ -26,6 +26,7 @@ public class ProfileFragment extends Fragment {
 
         ProfileFragment fragment = new ProfileFragment();
         fragment.setArguments(args);
+
         return fragment;
     }
 

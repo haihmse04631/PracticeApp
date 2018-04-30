@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +73,7 @@ public class MusicFragment extends Fragment {
 
         rclMusicType.setLayoutManager(gridLayoutManager);
         loadData();
+
         return view;
     }
 
@@ -97,7 +97,6 @@ public class MusicFragment extends Fragment {
                             "genre_x2_" + items.getId(),
                             "raw",
                             getContext().getPackageName());
-                    Log.e("image", "" + imageId);
                     musicTypeList.add(new MusicType(id, musicName, imageId));
                 }
                 avi.hide();
