@@ -9,6 +9,7 @@ import com.example.macbookpro.practiceapp.Fragment.MapFragment;
 import com.example.macbookpro.practiceapp.Fragment.MusicFragment;
 import com.example.macbookpro.practiceapp.Fragment.ProfileFragment;
 import com.example.macbookpro.practiceapp.Fragment.SettingFragment;
+import com.example.macbookpro.practiceapp.Model.User;
 
 /**
  * Created by MacbookPro on 3/25/18.
@@ -18,6 +19,13 @@ public class LifelogPagerAdapter extends FragmentPagerAdapter {
 
     public LifelogPagerAdapter(FragmentManager fm) {
         super(fm);
+    }
+
+    public User receivedUser;
+
+    public LifelogPagerAdapter(FragmentManager fm, User receivedUser) {
+        super(fm);
+        this.receivedUser = receivedUser;
     }
 
     @Override
@@ -30,7 +38,7 @@ public class LifelogPagerAdapter extends FragmentPagerAdapter {
             case 2:
                 return ChatFragment.newInstance();
             case 3:
-                return ProfileFragment.newInstance();
+                return ProfileFragment.newInstance(receivedUser);
             case 4:
                 return SettingFragment.newInstance();
         }

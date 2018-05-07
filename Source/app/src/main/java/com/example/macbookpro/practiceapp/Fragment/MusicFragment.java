@@ -89,7 +89,7 @@ public class MusicFragment extends Fragment {
             @Override
             public void onResponse(Call<MusicTypeResponseJSON> call, Response<MusicTypeResponseJSON> response) {
                 List<MusicTypeResponseJSON.MusicTypeJSON> list = response.body().subgenres;
-
+                musicTypeList.clear();
                 for (MusicTypeResponseJSON.MusicTypeJSON items : list) {
                     String id = items.getId();
                     String musicName = items.getTranslation_key();

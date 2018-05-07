@@ -1,31 +1,48 @@
 package com.example.macbookpro.practiceapp.Activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.macbookpro.practiceapp.Adapter.LifelogPagerAdapter;
+import com.example.macbookpro.practiceapp.Model.User;
 import com.example.macbookpro.practiceapp.R;
 
 public class LifelogActivity extends AppCompatActivity implements View.OnClickListener {
     private ViewPager viewPager;
-    private TextView tvHome,tvNews,tvInbox,tvProfile,tvSetting;
-    private ImageView imgHome,imgNews,imgInbox,imgProfile,imgSetting;
+    private TextView tvHome, tvNews, tvInbox, tvProfile, tvSetting;
+    private ImageView imgHome, imgNews, imgInbox, imgProfile, imgSetting;
     private TextView[] tabTextviews;
     private ImageView[] tabImageViews;
     private RelativeLayout rlMenuHome, rlMenuNews, rlMenuInbox, rlMenuProfile, rlMenuSetting;
+    private User receivedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lifelog);
         referenceComponent();
+        getInforUser();
         setupUI();
+        Log.e("objectAhihi", receivedUser.getAvatar());
+    }
+
+    private void getInforUser() {
+        SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.SHAREPRE_FILE_NAME, Context.MODE_PRIVATE);
+        String id = sharedPreferences.getString("ID_KEY", "");
+        String name = sharedPreferences.getString("ID_NAME", "");
+        String email = sharedPreferences.getString("ID_EMAIL", "");
+        String avatar = sharedPreferences.getString("ID_URL", "");
+        String birthday = sharedPreferences.getString("ID_BIRTHDAY", "");
+        receivedUser = new User(id, name, email, avatar, birthday);
     }
 
 
@@ -53,6 +70,7 @@ public class LifelogActivity extends AppCompatActivity implements View.OnClickLi
         rlMenuHome.setOnClickListener(this);
         tabTextviews = new TextView[]{tvHome, tvNews, tvInbox, tvProfile, tvSetting};
         tabImageViews = new ImageView[]{imgHome, imgNews, imgInbox, imgProfile, imgSetting};
+
     }
 
     private void setupUI() {
@@ -73,16 +91,16 @@ public class LifelogActivity extends AppCompatActivity implements View.OnClickLi
 
             }
         });
-        LifelogPagerAdapter adapter = new LifelogPagerAdapter(getSupportFragmentManager());
+        LifelogPagerAdapter adapter = new LifelogPagerAdapter(getSupportFragmentManager(), receivedUser);
         viewPager.setAdapter(adapter);
     }
 
-    private void setColorTabBar(int currentPosition){
-        for(int i=0; i<5; i++){
-            if(i == currentPosition){
+    private void setColorTabBar(int currentPosition) {
+        for (int i = 0; i < 5; i++) {
+            if (i == currentPosition) {
                 tabTextviews[currentPosition].setTextColor(Color.RED);
                 tabImageViews[currentPosition].setColorFilter(Color.RED);
-            }else {
+            } else {
                 tabImageViews[i].setColorFilter(Color.BLACK);
                 tabTextviews[i].setTextColor(Color.BLACK);
             }
@@ -93,7 +111,7 @@ public class LifelogActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         int v = view.getId();
-        switch (v){
+        switch (v) {
             case R.id.rl_menu1:
                 viewPager.setCurrentItem(0);
                 break;
